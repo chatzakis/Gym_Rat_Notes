@@ -15,7 +15,9 @@ This is a simple Android Studio application offering a simple solution to an eve
 ![gym-rat-exercise-example](https://github.com/chatzakis/Gym_Rat_Notes/assets/122749336/c725b627-dc76-4374-9986-54e66232fefb)
 ![gym-rat-program-example](https://github.com/chatzakis/Gym_Rat_Notes/assets/122749336/091060d2-f1c4-4144-aad9-b134ae6880e9)
 
-## Activities chart![Blank diagram](https://github.com/chatzakis/Gym_Rat_Notes/assets/122749336/d5463e66-1914-460d-a29c-2e7ada56c17c)
-
 ## Installation
 APK download will be available soon.
+
+## Activities chart![Blank diagram](https://github.com/chatzakis/Gym_Rat_Notes/assets/122749336/d5463e66-1914-460d-a29c-2e7ada56c17c)
+
+
