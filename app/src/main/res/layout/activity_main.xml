@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/Theme.GymBuddy.AppBarOverlay"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/mp_blue"
+                app:popupTheme="@style/Theme.GymBuddy.PopupOverlay" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+            app:layout_constraintVertical_bias="0.73">
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="8dp">
+
+                <TableRow
+                    android:id="@+id/firstButtonRow"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <Button
+                        android:id="@+id/programsBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:layout_weight="1"
+                        android:contentDescription="@string/program"
+                        android:text="@string/program"
+                        android:textColor="@color/mp_sugar"
+                        android:textSize="16sp"
+                        app:backgroundTint="@color/mp_navy"
+                        app:cornerRadius="0dp"
+                        app:icon="@drawable/calendar"
+                        app:iconSize="24dp"
+                        app:iconTint="@color/mp_sugar" />
+
+                    <Button
+                        android:id="@+id/lastEntriesBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:layout_weight="1"
+                        android:contentDescription="@string/last_entries"
+                        android:text="@string/last_entries"
+                        android:textColor="@color/mp_sugar"
+                        android:textSize="16sp"
+                        app:backgroundTint="@color/mp_navy"
+                        app:cornerRadius="0dp"
+                        app:icon="@drawable/recent"
+                        app:iconSize="24dp"
+                        app:iconTint="@color/mp_sugar" />
+                </TableRow>
+
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+                    <ImageButton
+                        android:id="@+id/chestButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8sp"
+                        android:layout_weight="1"
+                        android:adjustViewBounds="true"
+                        android:background="@color/chest_color"
+                        android:contentDescription="@string/chest_exercises"
+                        android:paddingBottom="4dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/chestbtn" />
+
+                    <ImageButton
+                        android:id="@+id/backButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8sp"
+                        android:layout_weight="1"
+                        android:adjustViewBounds="true"
+                        android:background="@color/back_color"
+                        android:contentDescription="@string/back_exercises"
+                        android:paddingBottom="4dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/backbtn" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+                    <ImageButton
+                        android:id="@+id/legsButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8sp"
+                        android:layout_weight="1"
+                        android:adjustViewBounds="true"
+                        android:background="@color/legs_color"
+                        android:contentDescription="@string/legs_exercises"
+                        android:paddingBottom="4dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/legsbtn" />
+
+                    <ImageButton
+                        android:id="@+id/shouldersButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8sp"
+                        android:layout_weight="1"
+                        android:adjustViewBounds="true"
+                        android:background="@color/shoulders_color"
+                        android:contentDescription="@string/shoulders_exercises"
+                        android:paddingBottom="4dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/shouldersbtn" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+                    <ImageButton
+                        android:id="@+id/armsButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8sp"
+                        android:layout_weight="1"
+                        android:adjustViewBounds="true"
+                        android:background="@color/arms_color"
+                        android:contentDescription="@string/arms_exercises"
+                        android:paddingBottom="4dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/armsbtn" />
+
+                    <ImageButton
+                        android:id="@+id/absButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8sp"
+                        android:layout_weight="1"
+                        android:adjustViewBounds="true"
+                        android:background="@color/abs_color"
+                        android:contentDescription="@string/abs_exercises"
+                        android:paddingBottom="4dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/absbtn" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageButton
+                        android:id="@+id/aerobicButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8sp"
+                        android:layout_weight="1"
+                        android:adjustViewBounds="true"
+                        android:background="@color/aerobic_color"
+                        android:contentDescription="@string/aerobic_exercises"
+                        android:paddingBottom="4dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/aerobicbtn2" />
+
+                </TableRow>
+            </TableLayout>
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

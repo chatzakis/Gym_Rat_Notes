@@ -1,0 +1,207 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Gym Rat Notes</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="title_activity_add_exercise">AddExercise</string>
+    <string name="muscle_groups">Muscle Groups</string>
+    <string name="enterExer">Enter exercise name</string>
+    <string name="example_exercise">eg. Push ups</string>
+    <string name="select_group">Select muscle group</string>
+    <string name="exersise_description">Exercise description</string>
+    <string-array name="muscle_groups">
+        <item>Select muscle group</item>
+        <item>Chest</item>
+        <item>Back</item>
+        <item>Shoulders</item>
+        <item>Arms</item>
+        <item>Abs</item>
+        <item>Legs</item>
+        <item>Aerobic</item>
+    </string-array>
+    <string name="new_exercise">New Exercise</string>
+    <string name="edit_exercise">Edit Exercise</string>
+    <string name="new_entry">New Entry</string>
+    <string name="edit_entry">Edit Entry</string>
+
+    <string name="add">Add</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+    <string name="open">Open</string>
+    <string name="delete_exercise">Delete exercise</string>
+    <string name="title_activity_entries">Entries</string>
+    <string name="title_activity_add_entry">Add Entry</string>
+
+    <string name="date">Date</string>
+    <string name="weight">Weight</string>
+    <string name="reps">Reps</string>
+    <string name="sets">Sets</string>
+    <string name="duration">Duration</string>
+    <string name="pace">Pace</string>
+    <string name="rest">Rest time</string>
+    <string name="comments">Comments</string>
+    <string name="title_activity_exercises">ExercisesActivity</string>
+
+    <string name="chest_exercises">Chest Exercises</string>
+    <string name="back_exercises">Back Exercises</string>
+    <string name="arms_exercises">Arms Exercises</string>
+    <string name="shoulders_exercises">Shoulders Exercises</string>
+    <string name="legs_exercises">Legs Exercises</string>
+    <string name="abs_exercises">Abs Exercises</string>
+    <string name="aerobic_exercises">Aerobic Exercises</string>
+
+
+    <string-array name="chest_groups">
+        <item>Select Chest muscle group</item>
+        <item>Upper chest</item>
+        <item>Middle chest</item>
+        <item>Lower chest</item>
+    </string-array>
+
+    <string-array name="back_groups">
+        <item>Select back muscle group</item>
+        <item>Upper back</item>
+        <item>Middle back</item>
+        <item>Lower back</item>
+    </string-array>
+
+    <string-array name="shoulders_groups">
+        <item>Select shoulder muscle group</item>
+        <item>Front Delts</item>
+        <item>Middle Delts</item>
+        <item>Rear Delts</item>
+    </string-array>
+
+    <string-array name="arms_groups">
+        <item>Select arms muscle group</item>
+        <item>Biceps</item>
+        <item>Triceps</item>
+        <item>Forearms</item>
+    </string-array>
+
+    <string-array name="abs_groups">
+        <item>Select abs muscle group</item>
+        <item>Upper abs</item>
+        <item>Lower abs</item>
+        <item>Side abs</item>
+    </string-array>
+
+    <string-array name="legs_groups">
+        <item>Select legs muscle group</item>
+        <item>Glutes</item>
+        <item>Quads</item>
+        <item>Hamstrings</item>
+        <item>Calves</item>
+    </string-array>
+
+    <string-array name="aerobic_groups">
+        <item>Select aerobic category</item>
+        <item>Running</item>
+        <item>Bicycle</item>
+        <item>Jumping rope</item>
+        <item>Swimming</item>
+    </string-array>
+
+    <string name="muscle_group_demo">Muscle Group Demo</string>
+
+    <string name="exercise_info">Exercise info</string>
+
+    <string name="no_info">No info available</string>
+
+    <string name="title_activity_exercise_info">Exercise info</string>
+
+    <string name="add_entries_instruction">When you are inside an exercise, press the <b>Plus button (+)</b> to add your first entry. <br />
+        You can add the weights, repetitions, sets, pace etc.  of your exercise to compare in the future. <br />
+        By pressing on an entry you can <b>edit or delete</b> it later</string>
+
+    <string name="last_entries">Last entries</string>
+
+    <string name="program">Program</string>
+    <string name="gym_programs">Gym Programs</string>
+    <string name="add_program">Add program</string>
+    <string name="edit_program_exercises">Edit Program exercises</string>
+    <string name="edit_program_info">Edit Program info</string>
+    <string name="delete_program">Delete Program</string>
+    <string name="program_info">Program Info</string>
+
+    <string name="program_name">Program name</string>
+    <string name="program_duration">Program duration</string>
+    <string name="program_difficulty">Program difficulty</string>
+    <string name="program_goal">Program goal</string>
+    <string name="program_description">Program description</string>
+    <string name="program_exercise_count">Program exercise count</string>
+
+    <string name="name">Name</string>
+    <string name="difficulty">Difficulty</string>
+    <string name="duration_min">Duration (min)</string>
+    <string name="goal">Goal</string>
+    <string name="description">Description</string>
+    <string name="exercise_count">Exercise count</string>
+
+    <string name="program_exercise_order_placeholder">#</string>
+
+    <string name="program_duration_example">30 min</string>
+    <string name="program_difficulty_example">0–3 (1)</string>
+
+    <string name="goal_unavailable">No goal found. Press <b>Edit</b> to add a new one</string>
+    <string name="description_unavailable">No description found. Press <b>Edit</b> to add a new one</string>
+
+    <string name="add_program_instruction">Press the <b>Plus button (+)</b> to create your first program. You can add the Goal, Description, Difficulty, Duration etc. <br />
+        You can <b>edit or delete</b> it later </string>
+
+    <string name="add_exercises_to_program">Add exercises to your program</string>
+    <string name="save_changes_to_program">Save your changes</string>
+
+    <string name="minutes_suffix"> min</string>
+
+    <string name="add_program_exercises_instruction">Press <b>Next</b> to add Exercises to your Program</string>
+
+    <string name="add_program_exercises_instruction_analytical">Press on the exercise you want to add in your program in the correct order.
+    Press on an exercise again to remove it.</string>
+
+
+    <string name="lorem_ipsum">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
+        volutpat, dolor id interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus
+        dui nec risus. Maecenas non sodales nisi, vel dictum dolor. Class aptent taciti sociosqu ad
+        litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse blandit eleifend
+        diam, vel rutrum tellus vulputate quis. Aliquam eget libero aliquet, imperdiet nisl a,
+        ornare ex. Sed rhoncus est ut libero porta lobortis. Fusce in dictum tellus.\n\n
+        Suspendisse interdum ornare ante. Aliquam nec cursus lorem. Morbi id magna felis. Vivamus
+        egestas, est a condimentum egestas, turpis nisl iaculis ipsum, in dictum tellus dolor sed
+        neque. Morbi tellus erat, dapibus ut sem a, iaculis tincidunt dui. Interdum et malesuada
+        fames ac ante ipsum primis in faucibus. Curabitur et eros porttitor, ultricies urna vitae,
+        molestie nibh. Phasellus at commodo eros, non aliquet metus. Sed maximus nisl nec dolor
+        bibendum, vel congue leo egestas.\n\n
+        Sed interdum tortor nibh, in sagittis risus mollis quis. Curabitur mi odio, condimentum sit
+        amet auctor at, mollis non turpis. Nullam pretium libero vestibulum, finibus orci vel,
+        molestie quam. Fusce blandit tincidunt nulla, quis sollicitudin libero facilisis et. Integer
+        interdum nunc ligula, et fermentum metus hendrerit id. Vestibulum lectus felis, dictum at
+        lacinia sit amet, tristique id quam. Cras eu consequat dui. Suspendisse sodales nunc ligula,
+        in lobortis sem porta sed. Integer id ultrices magna, in luctus elit. Sed a pellentesque
+        est.\n\n
+        Aenean nunc velit, lacinia sed dolor sed, ultrices viverra nulla. Etiam a venenatis nibh.
+        Morbi laoreet, tortor sed facilisis varius, nibh orci rhoncus nulla, id elementum leo dui
+        non lorem. Nam mollis ipsum quis auctor varius. Quisque elementum eu libero sed commodo. In
+        eros nisl, imperdiet vel imperdiet et, scelerisque a mauris. Pellentesque varius ex nunc,
+        quis imperdiet eros placerat ac. Duis finibus orci et est auctor tincidunt. Sed non viverra
+        ipsum. Nunc quis augue egestas, cursus lorem at, molestie sem. Morbi a consectetur ipsum, a
+        placerat diam. Etiam vulputate dignissim convallis. Integer faucibus mauris sit amet finibus
+        convallis.\n\n
+        Phasellus in aliquet mi. Pellentesque habitant morbi tristique senectus et netus et
+        malesuada fames ac turpis egestas. In volutpat arcu ut felis sagittis, in finibus massa
+        gravida. Pellentesque id tellus orci. Integer dictum, lorem sed efficitur ullamcorper,
+        libero justo consectetur ipsum, in mollis nisl ex sed nisl. Donec maximus ullamcorper
+        sodales. Praesent bibendum rhoncus tellus nec feugiat. In a ornare nulla. Donec rhoncus
+        libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
+        vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
+    </string>
+    <string name="title_activity_last_entries">LastEntriesActivity</string>
+    <string name="exerciseName">Exercise Name</string>
+</resources>

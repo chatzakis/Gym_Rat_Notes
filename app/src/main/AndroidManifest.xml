@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.GymBuddy">
+        <activity
+            android:name=".AddGymProgramExercisesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".GymProgramInfoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddGymProgramInfoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SingleGymProgramActivity"
+            android:exported="false" />
+        <activity
+            android:name=".GymProgramsActivity"
+            android:parentActivityName=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LastEntriesActivity"
+            android:parentActivityName=".MainActivity"
+            android:exported="false"
+            android:label="@string/title_activity_last_entries"
+            android:theme="@style/Theme.GymBuddy" />
+        <activity
+            android:name=".ExerciseInfo"
+            android:parentActivityName=".MainActivity"
+            android:exported="false"
+            android:label="@string/title_activity_exercise_info"
+            android:theme="@style/Theme.GymBuddy" />
+        <activity
+            android:name=".ExercisesActivity"
+            android:exported="false"
+            android:label="@string/title_activity_exercises"
+            android:theme="@style/Theme.GymBuddy" />
+        <activity
+            android:name=".AddEntryActivity"
+            android:label="@string/title_activity_add_entry"
+            android:theme="@style/Theme.GymBuddy" />
+        <activity
+            android:name=".EntriesActivity"
+            android:label="@string/title_activity_entries"
+            android:theme="@style/Theme.GymBuddy" />
+        <activity
+            android:name=".AddExercise"
+            android:label="@string/title_activity_add_exercise"
+            android:theme="@style/Theme.GymBuddy" />
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.GymBuddy">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

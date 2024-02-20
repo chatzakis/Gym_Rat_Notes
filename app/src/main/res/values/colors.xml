@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    
+    <color name="mp_navy">#23374D</color>
+    <color name="mp_navy_light">#3D6187</color>
+    <color name="mp_blue">#1089FF</color>
+    <color name="mp_sugar">#E5E5E5</color>
+    <color name="light_blue_bg">#ADD6FF</color>
+
+    <color name="chest_color">#EF3F00</color>
+    <color name="back_color">#01F025</color>
+    <color name="shoulders_color">#C84EE1</color>
+    <color name="arms_color">#E1B61D</color>
+    <color name="legs_color">#456FE1</color>
+    <color name="abs_color">#BBBCDE</color>
+    <color name="aerobic_color">#E020AB</color>
+
+
+    <color name="backgroundR">#EBE400</color>
+
+
+</resources>

@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="8dp"
+            android:gravity="center">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                app:cardBackgroundColor="#404040"
+                app:cardCornerRadius="10dp">
+
+                <ImageView
+                    android:id="@+id/weightImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/weight"
+                    android:scaleX="0.7"
+                    android:scaleY="0.7"
+                    android:src="@drawable/weight" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/weight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/weight"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/add_weight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"
+                android:contentDescription="@string/weight"
+                android:ems="9"
+                android:inputType="textPersonName" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_margin="8dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                app:cardBackgroundColor="#404040"
+                app:cardCornerRadius="10dp">
+
+                <ImageView
+                    android:id="@+id/repsImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/reps"
+                    android:scaleX="0.7"
+                    android:scaleY="0.7"
+                    android:src="@drawable/repetition" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/reps"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/reps"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/add_reps"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"
+                android:contentDescription="@string/reps"
+                android:ems="9"
+                android:inputType="textPersonName" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_margin="8dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                app:cardBackgroundColor="#404040"
+                app:cardCornerRadius="10dp">
+
+                <ImageView
+                    android:id="@+id/setsImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/sets"
+                    android:scaleX="0.7"
+                    android:scaleY="0.7"
+                    android:src="@drawable/number" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/sets"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sets"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/add_sets"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"
+                android:contentDescription="@string/sets"
+                android:ems="9"
+                android:inputType="textPersonName" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_margin="8dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                app:cardBackgroundColor="#404040"
+                app:cardCornerRadius="10dp">
+
+                <ImageView
+                    android:id="@+id/durationImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/duration"
+                    android:scaleX="0.7"
+                    android:scaleY="0.7"
+                    android:src="@drawable/duration" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/duration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/duration"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/add_duration"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"
+                android:contentDescription="@string/duration"
+                android:ems="9"
+                android:inputType="textPersonName" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_margin="8dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                app:cardBackgroundColor="#404040"
+                app:cardCornerRadius="10dp">
+
+                <ImageView
+                    android:id="@+id/paceImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/pace"
+                    android:scaleX="0.7"
+                    android:scaleY="0.7"
+                    android:src="@drawable/pace" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/pace"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/pace"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/add_pace"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"
+                android:ems="9"
+                android:contentDescription="@string/pace"
+                android:inputType="textPersonName" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_margin="8dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                app:cardBackgroundColor="#404040"
+                app:cardCornerRadius="10dp">
+
+                <ImageView
+                    android:id="@+id/restImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/rest"
+                    android:scaleX="0.7"
+                    android:scaleY="0.7"
+                    android:src="@drawable/rest" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/rest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/rest"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/add_rest"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"
+                android:ems="9"
+                android:contentDescription="@string/rest"
+                android:inputType="textPersonName" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_margin="8dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                app:cardBackgroundColor="#404040"
+                app:cardCornerRadius="10dp">
+
+                <ImageView
+                    android:id="@+id/commentsImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/comments"
+                    android:scaleX="0.7"
+                    android:scaleY="0.7"
+                    android:src="@drawable/comments" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/comments"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/comments"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/add_comments"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"
+                android:ems="9"
+                android:contentDescription="@string/comments"
+                android:inputType="textPersonName" />
+        </TableRow>
+
+    </TableLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
