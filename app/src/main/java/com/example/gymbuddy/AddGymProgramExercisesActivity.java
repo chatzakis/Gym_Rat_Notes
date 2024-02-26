@@ -78,8 +78,8 @@ public class AddGymProgramExercisesActivity extends AppCompatActivity {
 
     private void addNewGymProgram() {
         try (DatabaseHandler dbHelper = new DatabaseHandler(this)) {
-            dbHelper.addGymProgram(program);
-            Toast toast = Toast.makeText(this, "Gym Program Added", Toast.LENGTH_SHORT);
+            String result = dbHelper.addGymProgram(program);
+            Toast toast = Toast.makeText(this, result, Toast.LENGTH_SHORT);
             toast.show();
             goToGymProgramsActivity();
         }catch (Exception e){
