@@ -1,5 +1,8 @@
 package com.example.gymbuddy;
 
+import static android.app.PendingIntent.getActivity;
+
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -15,12 +18,11 @@ import java.util.List;
 
 
 public class DatabaseHandler extends SQLiteOpenHelper {
-    private final Context content;
     private static final String DATABASE_NAME = "database.db";
     private static final int DATABASE_VERSION = 1;
-    private static final String TABLE_EXERCISE = "Exercise";
-    private static final String TABLE_ENTRY = "Entry";
-    private static final String TABLE_GYM_PROGRAM = "GymProgram";
+    protected static final String TABLE_EXERCISE = "Exercise";
+    protected static final String TABLE_ENTRY = "Entry";
+    protected static final String TABLE_GYM_PROGRAM = "GymProgram";
 
     // General
     private static final String COLUMN_ID = "ID";
@@ -48,23 +50,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String COLUMN_GOAL = "Goal";
     private static final String COLUMN_PROGRAM_EXERCISES = "ProgramExercises";
 
-    private static final String DATABASE_FUNCTION = "Database functions:";
-    private static final String OK_MESSAGE = "DATA FUNCTION OK";
-    private static final String ERROR_MESSAGE = "DATA FUNCTION ERROR";
-
-    private DatabaseFunctions dbFunctions;
+    private static final String ADD_RECORD_RESULT = "Add record result";
+    private static final String RESULT_OK = "OK";
+    private static final String RESULT_ERROR = "ERROR";
 
 
     public DatabaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
-        this.content = context;
-        try  {
-            dbFunctions = new DatabaseFunctions(content);
-            Log.i(DATABASE_FUNCTION, OK_MESSAGE);
-        }
-        catch (Exception e){
-            Log.e(DATABASE_FUNCTION, ERROR_MESSAGE);
-        }
     }
 
     @Override
@@ -106,7 +98,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 COLUMN_PROGRAM_EXERCISES + " TEXT," +
                 "PRIMARY KEY(ID))";
         db.execSQL(createProgramTable);
-
+        Log.i("TABLE CREATION", "EXECUTED");
     }
 
     @Override
@@ -115,6 +107,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_ENTRY);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_GYM_PROGRAM);
         onCreate(db);
+        Log.i("TABLE UPGRADE", "EXECUTED");
     }
 
     public void resetDatabase() {
@@ -126,13 +119,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean checkTableEmpty(String tableName){
-        return dbFunctions.checkTableEmpty(tableName);
-    }
-
     // Exercise Table
-    public void addExercise(Exercise e) {
-        boolean exists = (dbFunctions.checkIdExistsInTable(e.getId(), TABLE_EXERCISE) || dbFunctions.checkNameExistsInTable(e.getName(), TABLE_EXERCISE));
+    public String addExercise(Exercise e) {
+        boolean exists = (checkIdExistsInTable(e.getId(), TABLE_EXERCISE) || checkNameExistsInTable(e.getName(), TABLE_EXERCISE));
+        String result;
 
         if (!exists) {
             ContentValues values = new ContentValues();
@@ -141,13 +131,15 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             values.put(COLUMN_MGROUP_ID, e.getMain_muscle_group());
             values.put(COLUMN_M2GROUP_ID, e.getSecondary_muscle_group());
             values.put(COLUMN_PHOTO, e.getPhotograph());
-            dbFunctions.addRecordToDatabase(values, TABLE_EXERCISE);
+            addRecordToDatabase(values, TABLE_EXERCISE);
+            result = e.getName() + " added successfully";
         } else
-            Toast.makeText(content, e.getName() + " already exists", Toast.LENGTH_SHORT).show();
+            result = e.getName() + " already exists";
+        return result;
     }
 
     public void addExerciseWithoutMessage(Exercise e) {
-        boolean exists = (dbFunctions.checkIdExistsInTable(e.getId(), TABLE_EXERCISE) || dbFunctions.checkNameExistsInTable(e.getName(), TABLE_EXERCISE));
+        boolean exists = (checkIdExistsInTable(e.getId(), TABLE_EXERCISE) || checkNameExistsInTable(e.getName(), TABLE_EXERCISE));
 
         if (!exists) {
             ContentValues values = new ContentValues();
@@ -156,7 +148,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             values.put(COLUMN_MGROUP_ID, e.getMain_muscle_group());
             values.put(COLUMN_M2GROUP_ID, e.getSecondary_muscle_group());
             values.put(COLUMN_PHOTO, e.getPhotograph());
-            dbFunctions.addRecordToDatabase(values, TABLE_EXERCISE);
+            addRecordToDatabase(values, TABLE_EXERCISE);
         }
     }
 
@@ -168,11 +160,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(COLUMN_M2GROUP_ID, e.getSecondary_muscle_group());
         values.put(COLUMN_PHOTO, e.getPhotograph());
 
-        dbFunctions.updateRecordInDatabase(values, TABLE_EXERCISE, e.getId());
+        updateRecordInDatabase(values, TABLE_EXERCISE, e.getId());
     }
 
     public List<Exercise> getExercises() {
-        Cursor cursor = dbFunctions.getAllRecordsFromTableDescending(TABLE_EXERCISE);
+        Cursor cursor = getAllRecordsFromTableDescending(TABLE_EXERCISE);
         List<Exercise> list = new ArrayList<>();
         while (cursor.moveToNext()) {
             long id = cursor.getLong(cursor.getColumnIndex(COLUMN_ID));
@@ -188,7 +180,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
     public Exercise getExerciseByID(long exerciseID) {
-        Cursor cursor = dbFunctions.getRecordsById(TABLE_EXERCISE, exerciseID);
+        Cursor cursor = getRecordsById(TABLE_EXERCISE, exerciseID);
         Exercise exercise = new Exercise();
         while (cursor.moveToNext()) {
             exercise.setId(cursor.getLong(cursor.getColumnIndex(COLUMN_ID)));
@@ -244,7 +236,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
     public void deleteExercise(long exerciseId) {
-        dbFunctions.deleteRecord(TABLE_EXERCISE, exerciseId);
+        deleteRecord(TABLE_EXERCISE, exerciseId);
     }
 
     // Table entry
@@ -262,7 +254,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         values.put(COLUMN_DATE, formatter.format(date));
 
-        dbFunctions.addRecordToDatabase(values, TABLE_ENTRY);
+        addRecordToDatabase(values, TABLE_ENTRY);
     }
 
     public void updateEntry(Entry o) {
@@ -275,11 +267,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(COLUMN_REST_TIME, o.getRest_time());
         values.put(COLUMN_PACE,o.getPace());
 
-        dbFunctions.updateRecordInDatabase(values, TABLE_ENTRY, o.getEntry_id());
+        updateRecordInDatabase(values, TABLE_ENTRY, o.getEntry_id());
     }
 
     public List<Entry> getEntries(int limit) {
-        Cursor cursor = dbFunctions.getAllRecordsFromTableDescending(TABLE_ENTRY);
+        Cursor cursor = getAllRecordsFromTableDescending(TABLE_ENTRY);
         List<Entry> list = new ArrayList<>();
         while (cursor.moveToNext() && limit>0) {
             long id = cursor.getLong(cursor.getColumnIndex(COLUMN_ID));
@@ -292,7 +284,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             String duration = cursor.getString(cursor.getColumnIndex(COLUMN_DURATION));
             String rest = cursor.getString(cursor.getColumnIndex(COLUMN_REST_TIME));
             String pace = cursor.getString(cursor.getColumnIndex(COLUMN_PACE));
-            list.add(new Entry(id, date, exerciseId, weight, sets, reps, duration,rest,pace, comments, dbFunctions.getNameByID(TABLE_EXERCISE, exerciseId)));
+            list.add(new Entry(id, date, exerciseId, weight, sets, reps, duration,rest,pace, comments, getNameByID(TABLE_EXERCISE, exerciseId)));
             limit --;
         }
         cursor.close();
@@ -315,7 +307,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             String duration = cursor.getString(cursor.getColumnIndex(COLUMN_DURATION));
             String rest = cursor.getString(cursor.getColumnIndex(COLUMN_REST_TIME));
             String pace = cursor.getString(cursor.getColumnIndex(COLUMN_PACE));
-            list.add(new Entry(id, date, exerciseId, weight, sets, reps, duration,rest,pace, comments, dbFunctions.getNameByID(TABLE_EXERCISE, exerciseId)));
+            list.add(new Entry(id, date, exerciseId, weight, sets, reps, duration,rest,pace, comments, getNameByID(TABLE_EXERCISE, exerciseId)));
         }
         cursor.close();
         db.close();
@@ -327,15 +319,15 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
     public void deleteEntry(long entryId) {
-        dbFunctions.deleteRecord(TABLE_ENTRY, entryId);
+        deleteRecord(TABLE_ENTRY, entryId);
     }
 
 
     // Gym Programs Table
-    public void addGymProgram(GymProgram program) {
-
-        boolean exists = (dbFunctions.checkIdExistsInTable(program.getGymProgramID(), TABLE_GYM_PROGRAM) ||
-                dbFunctions.checkNameExistsInTable(program.getName(), TABLE_GYM_PROGRAM));
+    public String addGymProgram(GymProgram program) {
+        String result;
+        boolean exists = (checkIdExistsInTable(program.getGymProgramID(), TABLE_GYM_PROGRAM) ||
+                checkNameExistsInTable(program.getName(), TABLE_GYM_PROGRAM));
 
         if (!exists) {
             ContentValues values = new ContentValues();
@@ -346,14 +338,16 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             values.put(COLUMN_DURATION, program.getDuration());
             values.put(COLUMN_PROGRAM_EXERCISES, program.storeExercisesToString());
 
-            dbFunctions.addRecordToDatabase(values,TABLE_GYM_PROGRAM);
+            addRecordToDatabase(values,TABLE_GYM_PROGRAM);
+            result = program.getName() + " added successfully";
         }
         else
-            Toast.makeText(content, program.getName() + " already exists",Toast.LENGTH_SHORT).show();
+            result = program.getName() + " already exists";
+        return result;
     }
 
     public List<GymProgram> getGymPrograms() {
-        Cursor cursor = dbFunctions.getAllRecordsFromTableDescending(TABLE_GYM_PROGRAM);
+        Cursor cursor = getAllRecordsFromTableDescending(TABLE_GYM_PROGRAM);
         List<GymProgram> list = new ArrayList<>();
         while (cursor.moveToNext()) {
             long id = cursor.getLong(cursor.getColumnIndex(COLUMN_ID));
@@ -370,7 +364,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
     public GymProgram getGymProgramByID(long gymProgramID) {
-        Cursor cursor = dbFunctions.getRecordsById(TABLE_GYM_PROGRAM, gymProgramID);
+        Cursor cursor = getRecordsById(TABLE_GYM_PROGRAM, gymProgramID);
         GymProgram program;
         while (cursor.moveToNext()) {
             long id = cursor.getLong(cursor.getColumnIndex(COLUMN_ID));
@@ -396,7 +390,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(COLUMN_DURATION,program.getDuration());
         values.put(COLUMN_PROGRAM_EXERCISES, program.storeExercisesToString());
 
-        dbFunctions.updateRecordInDatabase(values, TABLE_GYM_PROGRAM, program.getGymProgramID());
+        updateRecordInDatabase(values, TABLE_GYM_PROGRAM, program.getGymProgramID());
     }
 
     public void updateGymProgramInfo(GymProgram program) {
@@ -407,13 +401,110 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(COLUMN_DIFFICULTY, program.getDifficulty());
         values.put(COLUMN_DURATION,program.getDuration());
 
-        dbFunctions.updateRecordInDatabase(values, TABLE_GYM_PROGRAM, program.getGymProgramID());
+        updateRecordInDatabase(values, TABLE_GYM_PROGRAM, program.getGymProgramID());
 
     }
 
     public void deleteGymProgram(long gymProgramId) {
-        dbFunctions.deleteRecord(TABLE_GYM_PROGRAM, gymProgramId);
+        deleteRecord(TABLE_GYM_PROGRAM, gymProgramId);
+    }
+    
+    
+    // Functions
+    public boolean checkTableEmpty(String tableName){
+        SQLiteDatabase db = this.getWritableDatabase();
+        boolean isEmpty;
+        Cursor cursor;
+        String query = "SELECT * FROM " + tableName;
+        cursor = db.rawQuery(query, null);
+        isEmpty = cursor != null && cursor.getCount() == 0;
+        assert cursor != null;
+        cursor.close();
+        return isEmpty;
     }
 
+    public boolean checkNameExistsInTable(String dbRecordName, String tableName) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        boolean exists;
+
+        String query = "SELECT * FROM " + tableName +
+                " WHERE "+ COLUMN_NAME + " = '"+ dbRecordName + "'";
+        Cursor cursor = db.rawQuery(query, null);
+        exists = (cursor != null && cursor.getCount() > 0);
+        assert cursor != null;
+        cursor.close();
+        return exists;
+    }
+
+    public boolean checkIdExistsInTable(long dbRecordId, String tableName){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor;
+        boolean exists;
+        String query = "SELECT * FROM " + tableName + " WHERE " + COLUMN_ID +
+                " = "+ dbRecordId;
+        cursor = db.rawQuery(query, null);
+        exists = (cursor != null && cursor.getCount() > 0);
+        assert cursor != null;
+        cursor.close();
+        return exists;
+    }
+
+    public void addRecordToDatabase(ContentValues values, String tableName) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        long id = db.insert(tableName, null, values);
+        if (id == -1) {
+            Log.i(ADD_RECORD_RESULT, "Adding in Table " + tableName + " " + RESULT_OK);
+        } else {
+            Log.i(ADD_RECORD_RESULT, RESULT_ERROR + " in adding in Table " + tableName);
+        }
+        db.close();
+    }
+
+    public void updateRecordInDatabase(ContentValues values, String tableName, long id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.update(tableName, values, COLUMN_ID + " = ?",
+                new String[]{String.valueOf(id)});
+        db.close();
+    }
+
+    public void deleteRecord(String table, long id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(table, COLUMN_ID + " = ?", new String[]{String.valueOf(id)});
+        db.close();
+    }
+
+    @SuppressLint("Range")
+    public String getNameByID(String tableName, long id){
+        String query = "SELECT * FROM " + tableName +
+                " WHERE "+ COLUMN_ID + " = '"+ id + "'";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+        String exerciseName = "";
+        while (cursor.moveToNext()) {
+            if (cursor.getColumnIndex(COLUMN_NAME) >= 0)
+                exerciseName = cursor.getString(cursor.getColumnIndex(COLUMN_NAME));
+        }
+        cursor.close();
+        db.close();
+        return exerciseName;
+    }
+
+    public Cursor getRecordsById(String tableName, long id){
+        String query = "SELECT * FROM " + tableName +
+                " WHERE "+ COLUMN_ID + " = "+ id +
+                " ORDER BY " + COLUMN_ID + " DESC";;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+        return cursor;
+    }
+
+    public Cursor getAllRecordsFromTableDescending(String tableName){
+        String query = "SELECT * FROM " + tableName +
+                " ORDER BY " + COLUMN_ID + " DESC";
+        System.out.println(query);
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+        return cursor;
+    }
 
 }
