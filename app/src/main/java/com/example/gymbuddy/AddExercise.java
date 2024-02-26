@@ -104,7 +104,8 @@ public class AddExercise extends AppCompatActivity {
                     Exercise e = new Exercise(exID, name,
                             getGroupsFromSpinners(group, secondaryGroup), description);
                     if (exID == -1) {
-                        dbHelper.addExercise(e);
+                        String result = dbHelper.addExercise(e);
+                        Toast.makeText(this, result, Toast.LENGTH_SHORT).show();
                     } else {
                         dbHelper.updateExercise(e);
                     }
