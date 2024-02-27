@@ -6,10 +6,10 @@ Users can select between preinstalled gym exercises or create their own organize
 ### 2. Creating your Gym programs
 Users can create their custom gym programs combining preinstalled or other exercises. Each program can have its difficulty level, duration goal, etc, and it's easy to change and adjust. Organizing exercises in programs further simplifies the tracking process.
 ## 3. Information
-Users can find information on how to perform some of the most popular and effective gym exercises.
+Users can find information on performing some of the most popular and effective gym exercises.
 
 ##  Project info
-This is a simple Android Studio application offering a simple solution to an everyday need. This is version 1.0 so you might find bugs, inaccurate content, or missing features. Feel free to leave your comments and  suggestions!
+This simple Android Studio application offers a simple solution to an everyday need. This is version 1.0 so you might find bugs, inaccurate content, or missing features. Feel free to leave your comments and  suggestions!
 
 ## Photos
 ![gym-rat-exercise-example](https://github.com/chatzakis/Gym_Rat_Notes/assets/122749336/c725b627-dc76-4374-9986-54e66232fefb)
@@ -23,4 +23,6 @@ No ads, no need for login, personal information, or internet connection.
 
 ## Activities chart![Blank diagram](https://github.com/chatzakis/Gym_Rat_Notes/assets/122749336/d5463e66-1914-460d-a29c-2e7ada56c17c)
 
-
+##Technical details
+This app was created using Android Studio. It essentially creates and manages an SQLite database that stores Gym Exercises, Exercise Entries and Gym programs. On top of that it offers a simple UI with corresponding images to make it user-friendly. The logic of every Activity was written in Java code. The layout of each Activity was done with Android Studio components described in XML files. The initial concept design was done using Figma online software. Finally, the graphic elements and images were customized in Photoshop.
+Disclaimer: The images used in this project are sourced from various sources and are used for illustrative purposes only. We do not claim ownership of these images. All credits and copyrights belong to their respective owners. If you believe that any image used here infringes upon your copyright, please contact us immediately, and we will address the issue promptly.
